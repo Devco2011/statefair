@@ -8,5 +8,11 @@ export const RideTicketHolders = () => {
 
         }
     })
+    eventHub.addEventListener("fullPackageTicketPurchased", fullPackageEvent => {
+        if (fullPackageEvent.detail.ticketPurchased !== "0") {
+            contentTarget.innerHTML += `<div class="bigSpender person"></div>`
+
+        }
+    })
 }
 
