@@ -3,16 +3,15 @@ const eventHub = document.querySelector("#state-fair")
 
 export const RideTicketHolders = () => {
     eventHub.addEventListener("rideTicketPurchased", rideEvent => {
-        if (rideEvent.detail.ticketPurchased !== "0") {
-            contentTarget.innerHTML += `<div class="rider person"></div>`
 
-        }
+        contentTarget.innerHTML += `<div class="rider person"></div>`
+
     })
-    eventHub.addEventListener("fullPackageTicketPurchased", fullPackageEvent => {
-        if (fullPackageEvent.detail.ticketPurchased !== "0") {
-            contentTarget.innerHTML += `<div class="bigSpender person"></div>`
 
-        }
+    eventHub.addEventListener("fullPackageTicketPurchased", fullPackageEvent => {
+
+        contentTarget.innerHTML += `<div class="bigSpender person"></div>`
+
     })
 }
 

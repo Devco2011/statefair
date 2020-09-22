@@ -3,15 +3,14 @@ const eventHub = document.querySelector("#state-fair")
 
 export const SideshowTicketHolders = () => {
     eventHub.addEventListener("sideshowTicketPurchased", sideshowEvent => {
-        if (sideshowEvent.detail.ticketPurchased !== "0") {
-            contentTarget.innerHTML += `<div class="gawker person"></div>`
 
-        }
+        contentTarget.innerHTML += `<div class="gawker person"></div>`
+
     })
-    eventHub.addEventListener("fullPackageTicketPurchased", fullPackageEvent => {
-        if (fullPackageEvent.detail.ticketPurchased !== "0") {
-            contentTarget.innerHTML += `<div class="bigSpender person"></div>`
 
-        }
+    eventHub.addEventListener("fullPackageTicketPurchased", fullPackageEvent => {
+
+        contentTarget.innerHTML += `<div class="bigSpender person"></div>`
+
     })
 }

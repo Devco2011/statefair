@@ -1,3 +1,5 @@
+let totalTickets = 0
+const ticketCountTarget = document.querySelector(".customers")
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
 
@@ -5,64 +7,59 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "rideTicket") {
         const selectedTicket = clickEvent.target.value
 
-        const rideEvent = new CustomEvent("rideTicketPurchased", {
+        let stateChangeEvent = new CustomEvent("rideTicketPurchased", {
             detail: {
                 ticket: selectedTicket
             }
-        })
-        eventHub.dispatchEvent(rideEvent)
-    }
-})
 
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "foodTicket") {
+        })
+        allTickets(totalTickets++)
+        eventHub.dispatchEvent(stateChangeEvent)
+    }
+
+    else if (clickEvent.target.id === "foodTicket") {
         const selectedTicket = clickEvent.target.value
 
-        const foodEvent = new CustomEvent("foodTicketPurchased", {
+        let stateChangeEvent = new CustomEvent("foodTicketPurchased", {
             detail: {
                 ticket: selectedTicket
             }
         })
-        eventHub.dispatchEvent(foodEvent)
+        allTickets(totalTickets++)
+        eventHub.dispatchEvent(stateChangeEvent)
     }
-})
-
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "gameTicket") {
+    else if (clickEvent.target.id === "gameTicket") {
         const selectedTicket = clickEvent.target.value
 
-        const gameEvent = new CustomEvent("gameTicketPurchased", {
+        let stateChangeEvent = new CustomEvent("gameTicketPurchased", {
             detail: {
                 ticket: selectedTicket
             }
         })
-        eventHub.dispatchEvent(gameEvent)
+        allTickets(totalTickets++)
+        eventHub.dispatchEvent(stateChangeEvent)
     }
-})
-
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "sideshowTicket") {
+    else if (clickEvent.target.id === "sideshowTicket") {
         const selectedTicket = clickEvent.target.value
 
-        const sideshowEvent = new CustomEvent("sideshowTicketPurchased", {
+        let stateChangeEvent = new CustomEvent("sideshowTicketPurchased", {
             detail: {
                 ticket: selectedTicket
             }
         })
-        eventHub.dispatchEvent(sideshowEvent)
+        allTickets(totalTickets++)
+        eventHub.dispatchEvent(stateChangeEvent)
     }
-})
-
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "fullPackageTicket") {
+    else if (clickEvent.target.id === "fullPackageTicket") {
         const selectedTicket = clickEvent.target.value
 
-        const fullPackageEvent = new CustomEvent("fullPackageTicketPurchased", {
+        let stateChangeEvent = new CustomEvent("fullPackageTicketPurchased", {
             detail: {
                 ticket: selectedTicket
             }
         })
-        eventHub.dispatchEvent(fullPackageEvent)
+        allTickets(totalTickets++)
+        eventHub.dispatchEvent(stateChangeEvent)
     }
 })
 
@@ -76,6 +73,12 @@ export const TicketBooth = () => {
         <button id="fullPackageTicket">Full Package Ticket</button>
         </div>
     `
+}
+
+export const allTickets = () => {
+    eventHub.addEventListener("click", clickEvent => {
+        ticketCountTarget.innerHTML = `Total tickets purchased: ${totalTickets}`
+    })
 }
 
 
